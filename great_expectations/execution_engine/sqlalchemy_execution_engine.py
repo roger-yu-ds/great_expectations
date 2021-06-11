@@ -870,6 +870,10 @@ class SqlAlchemyExecutionEngine(ExecutionEngine):
         source_table_name = batch_spec.get("table_name", None)
         source_schema_name = batch_spec.get("schema_name", None)
 
+        print("hello will")
+        print(source_table_name)
+        print(source_schema_name)
+
         if isinstance(batch_spec, RuntimeQueryBatchSpec):
             # query != None is already checked when RuntimeQueryBatchSpec is instantiated
             query: str = batch_spec.query
