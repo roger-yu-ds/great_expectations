@@ -9,7 +9,7 @@ import great_expectations as ge
 from great_expectations.core.batch import BatchRequest, RuntimeBatchRequest
 
 # Google BigQuery config
-gcp_credentials = service_account.Credentials.from_service_account_info(
+credentials = service_account.Credentials.from_service_account_info(
     json.loads(os.environ.get("GCP_CREDENTIALS"))
 )
 gcp_project = os.environ.get("GCP_PROJECT")

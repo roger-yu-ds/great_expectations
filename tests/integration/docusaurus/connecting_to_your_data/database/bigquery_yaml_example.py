@@ -8,12 +8,8 @@ from util import load_data_into_database
 import great_expectations as ge
 from great_expectations.core.batch import BatchRequest, RuntimeBatchRequest
 
-credentials = service_account.Credentials.from_service_account_file(
-    "/Users/work/Development/creds/superconductive-internal-ba8ee4857de2.json"
-)
-
 # Google BigQuery config
-gcp_credentials = service_account.Credentials.from_service_account_info(
+credentials = service_account.Credentials.from_service_account_info(
     json.loads(os.environ.get("GCP_CREDENTIALS"))
 )
 gcp_project = os.environ.get("GCP_PROJECT")
