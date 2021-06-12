@@ -83,6 +83,7 @@ stages:
             pip install pytest pytest-azurepipelines
             # TODO enable spark tests
             # TODO enable sqlalchemy once cloud resources are working again
+            echo $(GCP_CREDENTIALS) >> gcp.json
             pytest -v --docs-tests -m docs --no-spark tests/integration/test_script_runner.py
           displayName: 'pytest'
           env:
@@ -108,4 +109,4 @@ stages:
             GCP_CREDENTIALS: $(GCP_CREDENTIALS)
             GCP_PROJECT: $(GCP_PROJECT)
             GCP_BIGQUERY_DATASET: $(GCP_BIGQUERY_DATASET)
-            GCP_BIGQUERY_TABLE: $(GCP_BIGQUERY_TABLE)
+            GOOGLE_APPLICATION_CREDENTIALS: $(GOOGLE_APPLICATION_CREDENTIALS)
