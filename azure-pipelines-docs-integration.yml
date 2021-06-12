@@ -105,3 +105,7 @@ stages:
             # AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
             # AWS_DEFAULT_REGION: $(AWS_DEFAULT_REGION)
             # todo: add credentials for cloud resources here
+            GCP_CREDENTIALS: $(GCP_CREDENTIALS)
+            GCP_PROJECT: $(GCP_PROJECT)
+            GCP_BIGQUERY_DATASET: $(GCP_BIGQUERY_DATASET)
+            GCP_BIGQUERY_TABLE: $(GCP_BIGQUERY_TABLE)
