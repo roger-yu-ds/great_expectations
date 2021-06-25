@@ -63,6 +63,7 @@ stages:
         python.version: '3.8'
       services:
         postgres: postgres
+        mssql: mssql
 
       steps:
         - task: UsePythonVersion@0
