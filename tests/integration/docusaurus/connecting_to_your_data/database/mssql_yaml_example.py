@@ -4,7 +4,7 @@ from util import load_data_into_database
 import great_expectations as ge
 from great_expectations.core.batch import BatchRequest, RuntimeBatchRequest
 
-CONNECTION_STRING = "mssql+pyodbc://sa:ReallyStrongPwd1234%^&*@localhost:1433/test_ci?driver=ODBC Driver 17 for SQL Server&charset=utf&autocommit=true"
+CONNECTION_STRING = "mssql+pyodbc://sa:ReallyStrongPwd1234%^&*@localhost:1433/tempdb?driver=ODBC Driver 17 for SQL Server&charset=utf&autocommit=true"
 load_data_into_database(
     "taxi_data",
     "./data/yellow_trip_data_sample_2019-01.csv",
@@ -45,7 +45,8 @@ batch_request = RuntimeBatchRequest(
     datasource_name="my_mssql_datasource",
     data_connector_name="default_runtime_data_connector_name",
     data_asset_name="default_name",  # this can be anything that identifies this data
-    runtime_parameters={"query": "select top 10 * from taxi_data"},
+    #runtime_parameters={"query": "select top 10 * from taxi_data"},
+    runtime_parameters={"query": "select * from taxi_data"},
     batch_identifiers={"default_identifier_name": "something_something"},
 )
 context.create_expectation_suite(
