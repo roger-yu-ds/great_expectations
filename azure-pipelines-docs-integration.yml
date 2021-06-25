@@ -80,7 +80,8 @@ stages:
           displayName: 'Install dependencies'
         - script: |
             sqlcmd -U sa -P "ReallyStrongPwd1234%^&*" -Q "CREATE DATABASE test_ci;" -o create_db_output.txt
-
+            head create_db_output.txt
+            ~~~~~~~~~~~~~~~~~~~~~~~
         - script: |
             pip install pytest pytest-azurepipelines
             # TODO enable spark tests

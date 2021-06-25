@@ -4,7 +4,7 @@ from util import load_data_into_database
 import great_expectations as ge
 from great_expectations.core.batch import BatchRequest, RuntimeBatchRequest
 
-CONNECTION_STRING = "mssql+pyodbc://sa:ReallyStrongPwd1234%^&*@localhost:1433/test_ci"
+CONNECTION_STRING = "mssql+pyodbc://sa:ReallyStrongPwd1234%^&*@localhost:1433/test_ci?driver=ODBC Driver 17 for SQL Server&charset=utf&autocommit=true"
 load_data_into_database(
     "taxi_data",
     "./data/yellow_trip_data_sample_2019-01.csv",
@@ -39,26 +39,26 @@ datasource_yaml = datasource_yaml.replace(
 context.test_yaml_config(datasource_yaml)
 
 context.add_datasource(**yaml.load(datasource_yaml))
-
-# Here is a RuntimeBatchRequest using a query
-batch_request = RuntimeBatchRequest(
-    datasource_name="my_mssql_datasource",
-    data_connector_name="default_runtime_data_connector_name",
-    data_asset_name="default_name",  # this can be anything that identifies this data
-    #runtime_parameters={"query": "select top 10 * from taxi_data"},
-    runtime_parameters={"query": "select * from taxi_data"},
-    batch_identifiers={"default_identifier_name": "something_something"},
-)
-context.create_expectation_suite(
-    expectation_suite_name="test_suite", overwrite_existing=True
-)
-validator = context.get_validator(
-    batch_request=batch_request, expectation_suite_name="test_suite"
-)
-print(validator.head())
+#
+# # Here is a RuntimeBatchRequest using a query
+# batch_request = RuntimeBatchRequest(
+#     datasource_name="my_mssql_datasource",
+#     data_connector_name="default_runtime_data_connector_name",
+#     data_asset_name="default_name",  # this can be anything that identifies this data
+#     #runtime_parameters={"query": "select top 10 * from taxi_data"},
+#     runtime_parameters={"query": "select * from taxi_data"},
+#     batch_identifiers={"default_identifier_name": "something_something"},
+# )
+# context.create_expectation_suite(
+#     expectation_suite_name="test_suite", overwrite_existing=True
+# )
+# validator = context.get_validator(
+#     batch_request=batch_request, expectation_suite_name="test_suite"
+# )
+# print(validator.head())
 
 # NOTE: The following code is only for testing and can be ignored by users.
-assert isinstance(validator, ge.validator.validator.Validator)
+# assert isinstance(validator, ge.validator.validator.Validator)
 
 # Here is a BatchRequest naming a table
 batch_request = BatchRequest(
