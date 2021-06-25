@@ -78,6 +78,8 @@ stages:
             pip install -r requirements-dev.txt
             pip install .
           displayName: 'Install dependencies'
+        - script: |
+            sqlcmd -U sa -P "ReallyStrongPwd1234%^&*" -Q "CREATE DATABASE test_ci;" -o create_db_output.txt
 
         - script: |
             pip install pytest pytest-azurepipelines

@@ -4,7 +4,7 @@ from util import load_data_into_database
 import great_expectations as ge
 from great_expectations.core.batch import BatchRequest, RuntimeBatchRequest
 
-CONNECTION_STRING = "mssql+pyodbc://sa:ReallyStrongPwd1234%^&*@localhost:1433/tempdb?driver=ODBC Driver 17 for SQL Server&charset=utf&autocommit=true"
+CONNECTION_STRING = "mssql+pyodbc://sa:ReallyStrongPwd1234%^&*@localhost:1433/test_ci"
 load_data_into_database(
     "taxi_data",
     "./data/yellow_trip_data_sample_2019-01.csv",
