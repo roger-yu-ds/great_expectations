@@ -100,7 +100,7 @@ You should see this:
         |-- .gitignore
         |-- uncommitted
             |-- config_variables.yml
-            |-- documentation
+            |-- data_docs
             |-- validations
 
     OK to proceed? [Y/n]: <press Enter>
